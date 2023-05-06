@@ -1,18 +1,19 @@
 package com.rentalFilm.project.Entities.DTO;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDTO {
+public class StaffDTO {
 
-  private String firstName;
+    private String firstname;
 
-  private String lastName;
+    private String lastname;
 
-  private  String email;
+    private LocalDateTime date;
 }

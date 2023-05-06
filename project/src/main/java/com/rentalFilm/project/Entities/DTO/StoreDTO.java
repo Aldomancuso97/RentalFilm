@@ -1,6 +1,5 @@
 package com.rentalFilm.project.Entities.DTO;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDTO {
+public class StoreDTO {
 
-  private String firstName;
-
-  private String lastName;
-
-  private  String email;
+    private String store_name;
 }
