@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table (name = "film")
 @Data
@@ -19,8 +21,8 @@ public class Film {
     private int releaseYear;
 
     @ManyToMany
-    private Language language;
+    private List<Language> language;
 
     @ManyToMany
-    private Genre genre;
+    private List<Genre> genre;
 }

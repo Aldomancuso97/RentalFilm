@@ -21,10 +21,6 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
-
-    @Autowired
-    CustomerRepository customerRepository;
-
     Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
 
