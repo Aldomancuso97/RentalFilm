@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table (name = "language")
 @Data
@@ -15,5 +17,8 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     private String name;
+
+    @ManyToMany
+    private List<Film> film;
 
 }
