@@ -1,5 +1,6 @@
 package com.rentalFilm.project.Service;
 
+import com.rentalFilm.project.Entities.DTO.CustomerDTO;
 import com.rentalFilm.project.Entities.Entity.Customer;
 import com.rentalFilm.project.Exceptions.CustomerNotFoundException;
 import com.rentalFilm.project.Repositories.CustomerRepository;
@@ -17,11 +18,19 @@ public class CustomerService {
 
     public Customer GetCustomerById(Long id) throws CustomerNotFoundException {
         Optional<Customer> customerOptional = customerRepository.findById(id);
-        if(customerOptional.isPresent()) {
+        if (customerOptional.isPresent()) {
             return customerOptional.get();
         }
         return null;
 
 
     }
+
+    public Customer create(CustomerDTO customer) {
+         Customer customerDB = new Customer();
+       return customerRepository.save(customerDB);
+    }
+
+
 }
+
