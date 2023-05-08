@@ -21,8 +21,8 @@ public class Film {
     private int releaseYear;
 
     @ManyToMany
-    private List<Language> language;
+    private List<Language> languages;
 
     @ManyToMany
-    private List<Genre> genre;
+    private List<Genre> genres;
 }
