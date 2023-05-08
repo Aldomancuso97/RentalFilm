@@ -20,20 +20,6 @@ public class FilmService {
     @Autowired
     FilmRepository filmRepository;
 
-    public Film getFilmById(Long id) throws FilmNotFoundException {
-        Optional <Film> filmOptional = filmRepository.findById(id);
-        if(filmOptional.isPresent()) {
-            return filmOptional.get(); }
-        return null;
-    }
-
-    public Film getAllFilms() throws FilmNotFoundException{
-        List<Film> films = filmRepository.findAll();
-        if(films.isEmpty()){
-            return null;
-        }return (Film) films;
-
-    }
 
     public Film addNewFilm(FilmDTO filmDTO) throws FilmNotFoundException {
         Film film = new Film();
@@ -42,16 +28,43 @@ public class FilmService {
         film.setDescription(filmDTO.getDescription());
         film.setReleaseYear(filmDTO.getReleaseYear());
         return filmRepository.save(film);
+    }
 
+    public Film getFilmById(Long id) throws FilmNotFoundException {
+        Optional<Film> filmOptional = filmRepository.findById(id);
+        if (filmOptional.isPresent()) {
+            return filmOptional.get();
+        }
+        return null;
+    }
 
+    public Film getAllFilms() throws FilmNotFoundException {
+        List<Film> films = filmRepository.findAll();
+        if (films.isEmpty()) {
+            return null;
+        }
+        return (Film) films;
 
     }
 
-    public Film deleteFilmById(Long id) throws FilmNotFoundException{
-        Optional <Film> optionalFilm = filmRepository.findById(id);
-        if(optionalFilm.isPresent()){
+    public Film updateFilm(Long id, FilmDTO filmDTO) throws FilmNotFoundException {
+        Optional<Film> optionalFilm = filmRepository.findById(id);
+        if (optionalFilm.isPresent()) {
+            Film film = optionalFilm.get();
+            film.setDescription(filmDTO.getDescription());
+            film.setTitle(filmDTO.getTitle());
+            film.setReleaseYear(filmDTO.getReleaseYear());
+            return filmRepository.save(film);
+        }
+        return null;
+    }
+
+    public Film deleteFilmById(Long id) throws FilmNotFoundException {
+        Optional<Film> optionalFilm = filmRepository.findById(id);
+        if (optionalFilm.isPresent()) {
             filmRepository.deleteById(id);
         }
         return null;
     }
 }
+

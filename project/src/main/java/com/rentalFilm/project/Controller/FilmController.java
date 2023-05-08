@@ -22,30 +22,6 @@ public class FilmController {
     FilmService filmService;
 
     Logger logger = LoggerFactory.getLogger(FilmController.class);
-    @GetMapping("/{Id}")
-    public ResponseEntity getFilmById(@PathVariable Long  Id) {
-        try {
-            logger.info("try to find a film by ID" + " : " + Id);
-            return ResponseEntity.status(HttpStatus.OK).body(filmService.getFilmById(Id));
-    }catch(FilmNotFoundException e){
-            logger.warn(e.getMessage());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
-        }
-
-    }
-    @GetMapping("/showall")
-    public ResponseEntity showFilms(){
-        try{
-            List<Film> getAllFilms = (List<Film>) filmService.getAllFilms();
-            getAllFilms.stream()
-                            .forEach(System.out ::println);
-            logger.info("souting all present films: " + getAllFilms );
-            return ResponseEntity.status(HttpStatus.OK).body(filmService.getAllFilms());
-        }catch (FilmNotFoundException e){
-            logger.warn(e.getMessage());
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
-        }
-    }
     @PostMapping("/addNewFilm")
     public ResponseEntity addFilms(@RequestBody FilmDTO filmDTO){
         try{
@@ -56,6 +32,39 @@ public class FilmController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
+    @GetMapping("/{Id}")
+    public ResponseEntity getFilmById(@PathVariable Long  Id) {
+        try {
+            logger.info("try to find a film by ID" + " : " + Id);
+            return ResponseEntity.status(HttpStatus.OK).body(filmService.getFilmById(Id));
+        }catch(FilmNotFoundException e){
+            logger.warn(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        }
+
+    }
+    @GetMapping("/showall")
+    public ResponseEntity showFilms(){
+        try{
+            logger.info("souting all present films: ");
+            return ResponseEntity.status(HttpStatus.OK).body(filmService.getAllFilms());
+        }catch (FilmNotFoundException e){
+            logger.warn(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        }
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity updateFilm(@PathVariable Long id, @RequestBody FilmDTO filmDTO){
+        try{
+            logger.info("Trying to update selected film : " + id);
+            return ResponseEntity.status(HttpStatus.OK).body(filmService.updateFilm(id, filmDTO));
+        }catch (FilmNotFoundException e){
+            logger.warn(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteFilm(@PathVariable Long id){
         try{
