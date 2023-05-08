@@ -43,7 +43,7 @@ public class FilmController {
         }
 
     }
-    @GetMapping("/showall")
+    @GetMapping("/showAll")
     public ResponseEntity showFilms(){
         try{
             logger.info("souting all present films: ");

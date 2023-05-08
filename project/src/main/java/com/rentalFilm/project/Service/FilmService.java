@@ -11,6 +11,7 @@ import com.rentalFilm.project.Repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,13 +39,15 @@ public class FilmService {
         return null;
     }
 
-    public Film getAllFilms() throws FilmNotFoundException {
-        List<Film> films = filmRepository.findAll();
-        if (films.isEmpty()) {
-            return null;
-        }
-        return (Film) films;
+    public List<Film> getAllFilms() throws FilmNotFoundException {
+        List <Film> films = new ArrayList<>();
+        films = filmRepository.findAll();
+        films.stream()
+                .findAny()
+                .get()
+                .toString();
 
+        return films;
     }
 
     public Film updateFilm(Long id, FilmDTO filmDTO) throws FilmNotFoundException {
