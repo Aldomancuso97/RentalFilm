@@ -1,8 +1,5 @@
 package com.rentalFilm.project.Controller;
 import com.rentalFilm.project.Entities.DTO.FilmDTO;
-import com.rentalFilm.project.Entities.DTO.GenreDTO;
-import com.rentalFilm.project.Entities.DTO.LanguageDTO;
-import com.rentalFilm.project.Entities.Entity.Film;
 import com.rentalFilm.project.Exceptions.FilmNotFoundException;
 import com.rentalFilm.project.Service.FilmService;
 import org.slf4j.Logger;
@@ -12,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/film")
@@ -46,7 +42,7 @@ public class FilmController {
     @GetMapping("/showAll")
     public ResponseEntity showFilms(){
         try{
-            logger.info("souting all present films: ");
+            logger.info("finding all present films: ");
             return ResponseEntity.status(HttpStatus.OK).body(filmService.getAllFilms());
         }catch (FilmNotFoundException e){
             logger.warn(e.getMessage());
@@ -70,6 +66,17 @@ public class FilmController {
         try{
             logger.info("Trying to delete selected film : " + id);
             return ResponseEntity.status(HttpStatus.OK).body(filmService.deleteFilmById(id));
+        }catch (FilmNotFoundException e){
+            logger.warn(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity deleteAllFilms(){
+        try{
+            logger.info("Trying to delete all films " );
+            return ResponseEntity.status(HttpStatus.OK).body(filmService.deleteAllFilms());
         }catch (FilmNotFoundException e){
             logger.warn(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

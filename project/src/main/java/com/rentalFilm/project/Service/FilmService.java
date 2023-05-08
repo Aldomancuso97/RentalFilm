@@ -69,5 +69,15 @@ public class FilmService {
         }
         return null;
     }
+
+    public List <Film> deleteAllFilms() throws FilmNotFoundException {
+        List <Film> films = new ArrayList<>();
+        films = filmRepository.findAll();
+        if(!films.isEmpty()){
+            filmRepository.deleteAll();
+        }
+
+        return films;
+    }
 }
 
