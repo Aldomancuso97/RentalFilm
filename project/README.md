@@ -1,5 +1,5 @@
 ## **WELCOME!**
-![](C:\Users\PC\Desktop\photo_5958546256345283695_y.jpg)
+
 
 | Data Inizio | Autori |
 |-------------|--------|
@@ -15,4 +15,4 @@
 
 ## TECHSTACK :
 
-Server: Java, Spring Boot, MySQL
+#### _**Server: Java, Spring Boot, MySQL**_

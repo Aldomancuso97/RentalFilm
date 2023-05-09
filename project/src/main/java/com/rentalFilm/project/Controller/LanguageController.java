@@ -40,15 +40,14 @@ public class LanguageController {
         }
     }
     @GetMapping("/showAll")
-    public ResponseEntity getAllLanguages() throws LanguagesNotFoundException {
+    public ResponseEntity getAllLanguages() {
         try{
             logger.info("Trying to get all languages");
-            languageService.getAllLanguages();
+            return ResponseEntity.status(HttpStatus.OK).body(languageService.getAllLanguages());
         }catch (LanguagesNotFoundException e){
             logger.warn(e.getMessage());
            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }finally {
-            return ResponseEntity.status(HttpStatus.OK).body(languageService.getAllLanguages());
+
 
         }
     }
@@ -73,14 +72,13 @@ public class LanguageController {
         }
     }
     @DeleteMapping("/deleteAll")
-    public ResponseEntity deleteAllLanguages() throws LanguagesNotFoundException{
+    public ResponseEntity deleteAllLanguages(){
         try{
             logger.info("Trying to delete all languages ");
             return ResponseEntity.status(HttpStatus.OK).body(languageService.deleteAllLanguages());
         }catch (LanguagesNotFoundException e){
             logger.warn(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-
         }
     }
 }
