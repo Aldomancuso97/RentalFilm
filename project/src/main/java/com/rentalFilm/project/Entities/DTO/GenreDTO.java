@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GenreDTO {
-    //private Long ID;
+
+    private Long ID;
     private String name;
 
 }

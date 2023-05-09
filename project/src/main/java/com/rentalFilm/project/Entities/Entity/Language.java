@@ -16,7 +16,8 @@ public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    private String name;
+
+    private String language;
 
     @ManyToMany
     private List<Film> film;
