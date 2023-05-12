@@ -23,14 +23,14 @@ public class RoleController {
     private final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
     @PostMapping("/create")
-    public ResponseEntity createRole(@RequestBody RoleDTO roleDTO){
+    public ResponseEntity createRole(@RequestBody RoleDTO roleDTO) {
         logger.info("try to create a role");
         return ResponseEntity.status(HttpStatus.CREATED).body(roleService.create(roleDTO));
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity ReadRole(@PathVariable long id){
+    public ResponseEntity ReadRole(@PathVariable long id) {
         try {
             logger.info("try to find a role " + id);
             return ResponseEntity.status(HttpStatus.OK).body(roleService.readRole(id));
@@ -42,7 +42,7 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteRole(@PathVariable long id){
+    public ResponseEntity deleteRole(@PathVariable long id) {
         try {
             logger.info("try to delete role " + id);
             return ResponseEntity.status(HttpStatus.OK).body(roleService.deleteRole(id));
@@ -53,19 +53,19 @@ public class RoleController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity readAll(){
-        try{
+    public ResponseEntity readAll() {
+        try {
             logger.info("try to read list of rules");
             return ResponseEntity.status(HttpStatus.OK).body(roleService.readAll());
-        }catch (RoleNotFoundException e){
+        } catch (RoleNotFoundException e) {
             logger.warn(e.getMessage());
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 
         }
     }
 
     @DeleteMapping("/all")
-    public ResponseEntity deleteAll(){
+    public ResponseEntity deleteAll() {
         try {
             logger.info("try to delete all roles");
             roleService.deleteAll();
@@ -75,27 +75,4 @@ public class RoleController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

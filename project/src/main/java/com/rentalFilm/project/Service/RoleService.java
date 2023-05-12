@@ -52,7 +52,7 @@ public class RoleService {
         return roleList;
     }
 
-    public List<Role> deleteAll() throws CustomerNotFoundException {
+    public List<Role> deleteAll() throws RoleNotFoundException {
         roleRepository.deleteAll(roleList);
         return null;
 
