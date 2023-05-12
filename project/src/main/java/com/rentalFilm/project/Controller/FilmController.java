@@ -17,7 +17,8 @@ public class FilmController {
     @Autowired
     FilmService filmService;
 
-    Logger logger = LoggerFactory.getLogger(FilmController.class);
+    private final Logger logger = LoggerFactory.getLogger(FilmController.class);
+
     @PostMapping("/addNewFilm")
     public ResponseEntity addFilms(@RequestBody FilmDTO filmDTO){
         try{

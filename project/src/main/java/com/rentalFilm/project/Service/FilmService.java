@@ -1,11 +1,7 @@
 package com.rentalFilm.project.Service;
 
 import com.rentalFilm.project.Entities.DTO.FilmDTO;
-import com.rentalFilm.project.Entities.DTO.GenreDTO;
-import com.rentalFilm.project.Entities.DTO.LanguageDTO;
 import com.rentalFilm.project.Entities.Entity.Film;
-import com.rentalFilm.project.Entities.Entity.Genre;
-import com.rentalFilm.project.Entities.Entity.Language;
 import com.rentalFilm.project.Exceptions.FilmNotFoundException;
 import com.rentalFilm.project.Repositories.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 public class GenreDTO {
 
     private Long ID;
-    private String name;
+    private String genreName;
 
 }

@@ -16,7 +16,7 @@ public class LanguageController {
     @Autowired
     LanguageService languageService;
 
-    Logger logger = LoggerFactory.getLogger(LanguageController.class);
+    private final Logger logger = LoggerFactory.getLogger(LanguageController.class);
 
     @PostMapping("/addNewLanguage")
     public ResponseEntity addNewLanguage(@RequestBody LanguageDTO languageDTO){
