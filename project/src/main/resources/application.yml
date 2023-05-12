@@ -1,14 +1,11 @@
 spring:
-  logging:
-     level:
-      root: INFO
-      Enable: ALWAYS
   datasource:
     url: jdbc:h2:mem:mydb
     username: test
     password: password
     driverClassName: org.h2.Driver
     console.enabled: true
-    jpa:
+  jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
 
