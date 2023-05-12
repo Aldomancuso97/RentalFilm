@@ -21,7 +21,7 @@ public class GenreController {
     @PostMapping ("/addNewGenre")
     public ResponseEntity addNewGenre(@RequestBody GenreDTO genreDTO){
         try{
-            logger.info("Trying to add a new genre");
+            logger.info("Trying to add a new genre" + genreDTO);
             return ResponseEntity.status(HttpStatus.OK).body(genreService.addNewGenre(genreDTO));
         }catch (GenreNotFoundException e){
             logger.warn(e.getMessage());
@@ -32,7 +32,7 @@ public class GenreController {
     @GetMapping ("/show/{id}")
     public ResponseEntity getOneGenre(@PathVariable Long id){
         try{
-            logger.info("Trying to get one genre");
+            logger.info("Trying to get one genre" + id);
             return ResponseEntity.status(HttpStatus.OK).body(genreService.getOneGenre(id));
         }catch (GenreNotFoundException e){
             logger.warn(e.getMessage());
@@ -54,7 +54,7 @@ public class GenreController {
     @PutMapping("/update/{id}")
     public ResponseEntity updateGenre(@PathVariable Long id,@RequestBody GenreDTO genreDTO){
         try{
-            logger.info("Trying to update selected genre ");
+            logger.info("Trying to update selected genre " + id + " " + genreDTO);
             return ResponseEntity.status(HttpStatus.OK).body(genreService.updateGenre(id, genreDTO));
         }catch (GenreNotFoundException e){
             logger.warn(e.getMessage());
@@ -64,7 +64,7 @@ public class GenreController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteGenre(@PathVariable Long id){
         try{
-            logger.info("Trying to delete selected genre");
+            logger.info("Trying to delete selected genre" + id);
             return ResponseEntity.status(HttpStatus.OK).body(genreService.deleteGenre(id));
         }catch (GenreNotFoundException e){
             logger.warn(e.getMessage());
@@ -74,7 +74,7 @@ public class GenreController {
     @DeleteMapping("/deleteAll")
     public ResponseEntity deleteAllGenres(){
         try{
-            logger.info("Trying to delete all genres ");
+            logger.info("Trying to delete all genres");
             return ResponseEntity.status(HttpStatus.OK).body(genreService.deleteAllGenres());
         }catch (GenreNotFoundException e){
             logger.warn(e.getMessage());

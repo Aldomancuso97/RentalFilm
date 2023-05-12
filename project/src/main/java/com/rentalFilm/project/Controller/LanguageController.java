@@ -21,7 +21,7 @@ public class LanguageController {
     @PostMapping("/addNewLanguage")
     public ResponseEntity addNewLanguage(@RequestBody LanguageDTO languageDTO){
         try{
-            logger.info("Trying to add a new language");
+            logger.info("Trying to add a new language" + languageDTO);
             return ResponseEntity.status(HttpStatus.OK).body(languageService.addNewLanguage(languageDTO));
         }catch (LanguagesNotFoundException e){
             logger.warn(e.getMessage());
@@ -32,7 +32,7 @@ public class LanguageController {
     @GetMapping("/show/{id}")
     public ResponseEntity getOneLanguage(@PathVariable Long id){
         try{
-            logger.info("Trying to get one language");
+            logger.info("Trying to get one language" + id);
             return ResponseEntity.status(HttpStatus.OK).body(languageService.getOneLanguage(id));
         }catch (LanguagesNotFoundException e){
             logger.warn(e.getMessage());
@@ -54,7 +54,7 @@ public class LanguageController {
     @PutMapping("/update/{id}")
     public ResponseEntity updateLanguage(@PathVariable Long id,@RequestBody LanguageDTO languageDTO){
         try{
-            logger.info("Trying to update selected language ");
+            logger.info("Trying to update selected language " + id + " " + languageDTO);
             return ResponseEntity.status(HttpStatus.OK).body(languageService.updateLanguage(id, languageDTO));
         }catch (LanguagesNotFoundException e){
             logger.warn(e.getMessage());
@@ -64,7 +64,7 @@ public class LanguageController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteLanguage(@PathVariable Long id){
         try{
-            logger.info("Trying to delete selected language");
+            logger.info("Trying to delete selected language" + id);
             return ResponseEntity.status(HttpStatus.OK).body(languageService.deleteLanguage(id));
         }catch (LanguagesNotFoundException e){
             logger.warn(e.getMessage());
