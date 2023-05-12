@@ -21,6 +21,8 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
+    List<Customer> customers = new ArrayList<>();
+
 
     public Customer GetCustomerById(Long id) throws CustomerNotFoundException {
         Optional<Customer> customerOptional = customerRepository.findById(id);
@@ -47,7 +49,6 @@ public class CustomerService {
 
 
     public List<Customer> all() throws CustomerNotFoundException {
-        List <Customer> customers = new ArrayList<>();
         customers = customerRepository.findAll();
         customers.stream()
                 .findAny()
@@ -55,5 +56,11 @@ public class CustomerService {
                 .toString();
 
         return customers;
+    }
+
+    public List<Customer> deleteAll() throws CustomerNotFoundException {
+        customerRepository.deleteAll(customers);
+        return null;
+
     }
 }

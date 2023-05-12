@@ -73,4 +73,17 @@ public class CustomerController {
 
     }
 
+    @DeleteMapping("/all")
+    public ResponseEntity deleteAll(){
+        try {
+            logger.info("try to delete all customers");
+            customerService.deleteAll();
+            return ResponseEntity.status(HttpStatus.OK).body("all customer deleted ");
+        } catch (CustomerNotFoundException e) {
+           logger.warn(e.getMessage());
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
+
 }
