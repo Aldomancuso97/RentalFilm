@@ -17,15 +17,6 @@ public class GenreService {
     @Autowired
     GenreRepository genreRepository;
 
-
-    public List<Genre> getAllGenres() throws GenreNotFoundException {
-        List <Genre> optionalGenre = genreRepository.findAll();
-        if(optionalGenre.isEmpty()) {
-            return null;
-        }
-        return optionalGenre;
-    }
-
     public Genre addNewGenre(GenreDTO genreDTO) throws GenreNotFoundException {
         Genre genre = new Genre();
         genre.setGenreName(genreDTO.getGenreName());
@@ -40,6 +31,14 @@ public class GenreService {
             return optionalGenre.get();
         }
         return null;
+    }
+
+    public List<Genre> getAllGenres() throws GenreNotFoundException {
+        List <Genre> optionalGenre = genreRepository.findAll();
+        if(optionalGenre.isEmpty()) {
+            return null;
+        }
+        return optionalGenre;
     }
 
     public Genre updateGenre(Long id, GenreDTO genreDTO) throws GenreNotFoundException{

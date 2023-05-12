@@ -19,7 +19,7 @@ public class CustomerController {
 
     @Autowired
     CustomerService customerService;
-    Logger logger = LoggerFactory.getLogger(CustomerController.class);
+    private final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
 
     @PostMapping("/create")

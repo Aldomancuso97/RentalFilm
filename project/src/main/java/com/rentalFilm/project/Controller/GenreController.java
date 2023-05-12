@@ -16,7 +16,7 @@ public class GenreController {
     @Autowired
     GenreService genreService;
 
-    Logger logger = LoggerFactory.getLogger(GenreController.class);
+    private final Logger logger = LoggerFactory.getLogger(GenreController.class);
 
     @PostMapping ("/addNewGenre")
     public ResponseEntity addNewGenre(@RequestBody GenreDTO genreDTO){
